@@ -22,11 +22,13 @@ def index(request):
     return render(request, 'rango/index.html', context_dict)
 
 def about(request):
+    print(request.method)
+    print(request.user)
     # Construct a dictionary to pass to the template engine as its context.
     context_dict = {'djangomessage' : "This tutorial has been put together by Kelly."}
     
     #Return a rendered response to send to the client.
-    return render(request, 'rango/about.html', context=context_dict)
+    return render(request, 'rango/about.html', context_dict)
 
 def show_category(request, category_name_slug):
     #Create a context dictionary which we can pass
