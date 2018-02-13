@@ -23,10 +23,12 @@ def index(request):
     page_list = Page.objects.order_by('-views')[:5]
     context_dict = {'categories' : category_list, 'pages' : page_list}
 
-    
+    response = render(request, 'rango/index.html', context_dict)
+    visitor_cookie_handler(request, response)
+       
 
     # Render the response and send it back!
-    return render(request, 'rango/index.html', context_dict)
+    return response
 
 def about(request):
     if request.session.test_cookie_worked():
